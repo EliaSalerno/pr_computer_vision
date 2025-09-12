@@ -11,12 +11,15 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Rileva i volti nell'immagine
 faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
-
+c=0
 # Disegna un rettangolo attorno ai volti rilevati
 for (x, y, w, h) in faces:
-    cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+    # cv2.rectangle(gray, (x, y), (x+w, y+h), (0, 0, 255), 2)
+    c+=1
 
 # Mostra il risultato
-cv2.imshow('Volti rilevati', img)
+c=int(c*1.1)
+print("Volti rilevati: "+str(c))
+cv2.imshow('Volti rilevati', gray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
