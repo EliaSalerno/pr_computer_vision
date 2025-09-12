@@ -1,9 +1,12 @@
 import cv2 as cv
 #import image
-image = cv.imread("shape.png")
+image = cv.imread("images/folla.jpg")
 
 #convert image into greyscale mode
-gray_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+lab_image=cv.cvtColor(image,cv.COLOR_BGR2LAB)
+hsv_image=cv.cvtColor(lab_image,cv.COLOR_BGR2HSV)
+gray_image=cv.cvtColor(hsv_image,cv.COLOR_BGR2GRAY)
+# gray_image = cv.cvtColor(hsv_image, cv.COLOR_BGR2GRAY)
 
 #find threshold of the image
 _, thrash = cv.threshold(gray_image, 240, 255, cv.THRESH_BINARY)
